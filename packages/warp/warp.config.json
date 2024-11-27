@@ -1,0 +1,65 @@
+{
+	"appearance": {
+		"fullWidth": false,
+		"theme": {
+			"mode": "light",
+			"primaryColor": "#F3F3F3",
+			"fontSize": "medium"
+		},
+		"layout": {
+			"sidebarPosition": "left",
+			"showGridLines": true,
+			"pageSpacing": "comfortable"
+		}
+	},
+	"plugins": {
+		"enabledPlugins": [
+			"noteTaking",
+			"taskManagement"
+		],
+		"pluginDirectory": "/plugins",
+		"updateCheck": {
+			"frequency": "weekly",
+			"autoUpdate": false
+		}
+	},
+	"notifications": {
+		"enableNotifications": true,
+		"showBadgeCount": true,
+		"alertTypes": {
+			"success": true,
+			"error": true,
+			"info": true,
+			"warning": true
+		},
+		"sound": {
+			"enabled": true,
+			"volume": 0.5
+		}
+	},
+	"account": {
+		"userPreferences": {
+			"language": "en",
+			"timeZone": "UTC",
+			"dateFormat": "DD-MM-YYYY",
+			"startOfWeek": "monday"
+		},
+		"privacySettings": {
+			"tracking": false,
+			"dataBackup": {
+				"enabled": true,
+				"backupFrequency": "weekly"
+			}
+		}
+	},
+	"integration": {
+		"cloudStorage": {
+			"provider": "googleDrive",
+			"autoSync": true
+		},
+		"calendarIntegration": {
+			"enabled": true,
+			"provider": "googleCalendar"
+		}
+	}
+}

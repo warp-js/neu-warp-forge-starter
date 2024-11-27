@@ -1,0 +1,68 @@
+:root{
+
+  --warp-font-size : 14px;
+  --warp-editor-font-size : var(--warp-font-size);
+  --warp-editor-font-size-h1: calc(var(--warp-font-size) * 2);
+  --warp-editor-font-size-h2: calc(var(--warp-font-size) * 1.75);
+  --warp-editor-font-size-h3: calc(var(--warp-font-size) * 1.5);
+  --warp-editor-font-size-h4: calc(var(--warp-font-size) * 1.25);
+  --warp-editor-font-size-h5: calc(var(--warp-font-size) * 1.125);
+
+  font-size: var(--warp-font-size);
+}
+
+pf-page{
+
+  h1{ font-size: var(--warp-editor-font-size-h1); }
+  h2{ font-size: var(--warp-editor-font-size-h2); }
+  h3{ font-size: var(--warp-editor-font-size-h3); }
+  h4{ font-size: var(--warp-editor-font-size-h4); }
+  h5{ font-size: var(--warp-editor-font-size-h5); }
+
+  div[slot=drawer-panel]{
+    height: 100%;
+  }
+
+  pf-panel{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  pf-panel::part(wrapper){
+    display: grid;
+    grid-template-rows: min-content minmax(0,1fr) min-content;
+    height: 100%;
+  }
+
+  pf-panel::part(main){
+    max-height: none;
+  }
+
+  pf-panel::part(header),
+  pf-panel::part(body),
+  pf-panel::part(footer){
+    padding: 0px;
+  }
+
+  pf-panel::part(main){
+    flex: 1;
+  }
+
+  hash-router-element > *{
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  warp-editor[fullwidth] .ce-block__content, 
+  warp-editor[fullwidth] .ce-toolbar__content { 
+    max-width:calc(100% - 80px) !important; 
+  }
+
+  warp-editor[fullwidth] .cdx-block { 
+    max-width: 100% !important; 
+  }
+
+}

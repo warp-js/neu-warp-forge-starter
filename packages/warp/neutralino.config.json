@@ -1,0 +1,125 @@
+{
+	"$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
+	"applicationId": "js.neutralino.sample",
+	"version": "1.0.0",
+	"defaultMode": "window",
+	"enableExtensions": true,
+	"url": "/index.html",
+	"enableServer": true,
+	"enableNativeAPI": true,
+	"exportAuthInfo": true,
+	"singlePageServe": true,
+	"tokenSecurity": "none",
+	"logging": {
+		"enabled": true,
+		"writeToLogFile": true
+	},
+	"nativeAllowList": [
+		"app.*",
+    "os.*",
+    "window.*",
+    "events.*",
+    "extensions.*",
+    "debug.log"
+	],
+	"globalVariables": {
+		"TEST1": "Hello",
+		"TEST2": [
+			2,
+			4,
+			5
+		],
+		"TEST3": {
+			"value1": 10,
+			"value2": {}
+		}
+	},
+	"modes": {
+		"window": {
+			"title": "warp",
+			"width": 800,
+			"height": 500,
+			"minWidth": 400,
+			"minHeight": 200,
+			"center": true,
+			"fullScreen": false,
+			"alwaysOnTop": false,
+			"icon": "/resources/icons/appIcon.png",
+			"enableInspector": true,
+			"borderless": false,
+			"maximize": false,
+			"hidden": false,
+			"resizable": true,
+			"exitProcessOnClose": true
+		},
+		"browser": {
+			"globalVariables": {
+				"TEST": "Test value browser"
+			}
+		},
+		"cloud": {
+			"url": "/resources/#cloud"
+		},
+		"chrome": {
+			"width": 800,
+			"height": 500,
+			"args": "--user-agent=\"Neutralinojs chrome mode\""
+		}
+	},
+	"extensions": [
+		{
+			"id": "database-extension",
+			"command": "node --inspect \"${NL_PATH}\"/extensions/database-extension/database-extension.js"
+		}
+	],
+	"buildScript": {
+		"mac": {
+			"architecture": [
+				"x64",
+				"arm64",
+				"universal"
+			],
+			"minimumOS": "10.13.0",
+			"appName": "Warp",
+			"appBundleName": "Warp",
+			"appIdentifier": "com.marketmix.ext.bun.demo",
+			"appIcon": "resources/icons/icon.icns"
+		},
+		"win": {
+			"architecture": [
+				"x64"
+			],
+			"appName": "Warp",
+			"appIcon": "resources/icons/icon.ico"
+		},
+		"linux": {
+			"architecture": [
+				"x64",
+				"arm64",
+				"armhf"
+			],
+			"appName": "Warp",
+			"appIcon": "resources/icons/icon.png",
+			"appPath": "/usr/share/warp",
+			"appIconPath": "/usr/share/warp/icon.png",
+			"appIconLocation": "/usr/share/warp/icon.png"
+		}
+	},
+	"documentRoot": "/ui",
+	"cli": {
+		"binaryName": "warp",
+		"resourcesPath": "/ui/",
+		"extensionsPath": "/extensions/",
+		"clientLibrary": "/ui/neutralino.js",
+		"binaryVersion": "5.3.0",
+		"clientVersion": "5.3.0",
+		"frontendLibrary": {
+			"patchFile": "/ui/index.html",
+			"devUrl": "http://localhost:3000",
+			"projectPath": "../../",
+			"initCommand": "npm install",
+			"devCommand": "npx warp-builder dev",
+			"buildCommand": "npx warp-builder build"
+		}
+	}
+}

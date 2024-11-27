@@ -1,0 +1,70 @@
+name: Build and Release NeutralinoJS App
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install NeutralinoJs
+        run: neu update
+
+      - name: Build NeutralinoJS app
+        run: npm run build
+
+      - name: Archive builds
+        run: |
+          zip -r warp-linux.zip ./packages/warp/dist/linux_x64 ./packages/warp/dist/wlinux_arm64 ./packages/warp/dist/linux_armhf
+          zip -r warp-mac.zip ./packages/warp/dist/mac_x64 ./packages/warp/dist/mac_arm64 ./packages/warp/dist/mac_universal
+          zip -r warp-win.zip ./packages/warp/dist/win_x64
+        shell: bash
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: builds
+          path: |
+            warp-linux.zip
+            warp-mac.zip
+            warp-win.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: builds
+          path: ./dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./dist/warp-linux.zip
+            ./dist/warp-mac.zip
+            ./dist/warp-win.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}

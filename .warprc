@@ -1,0 +1,40 @@
+{
+	"extensions_src_path": "extensions",
+	"extensions" : {
+		"entry": "extensions",
+		"output": "packages/extensions"
+	},
+	"packages" : {
+		"ui" : {
+			"name" : "ui",
+			"entry" : "packages/ui/src/index.html",
+			"output": "packages/warp/ui",
+			"staticFileDir" : "packages/ui/static",
+			"static" : {
+				"entry" : "packages/ui/static",
+				"output" : "./"
+			},
+      "devServer" : {
+				"port" : "1234",
+				"patchFile": "packages/ui/index.html",
+				"devUrl": "http://localhost:1234",
+				"projectPath": "packages/ui/"
+			}
+		},
+		"application" : {
+			"name" : "warp",
+			"entry" : "packages/warp"
+		}
+	},
+	"application": {
+		"moduleName": "ui",
+		"staticFilesDir": "packages/ui/static",
+		"devServer" : {
+			"port" : "1234",
+			"patchFile": "packages/ui/index.html",
+			"devUrl": "http://localhost:1234",
+			"projectPath": "packages/ui/"
+		}
+	},
+	"mode": "dev"
+}

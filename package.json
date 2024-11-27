@@ -1,0 +1,32 @@
+{
+	"name": "warp_app",
+	"version": "1.2.0",
+	"description": "Application bac à sable",
+	"scripts": {
+		"start": "gulp",
+		"dev": "gulp dev",
+		"package": "gulp package"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"@lithium-framework/core": "^1.8.5-1",
+		"@lithium-framework/router-element": "^1.0.2-1",
+		"@microsoft/fast-element": "^2.0.0-beta.26",
+		"@neutralinojs/lib": "^5.3.0",
+		"@neutralinojs/neu": "^11.3.0",
+		"@patternfly/react-core": "^5.4.0",
+		"@types/node": "^22.5.1",
+		"@warp-js/core-builder": "file:../core-builder",
+		"@warp-js/ipc-server": "file:../../warp/warp-app/modules/ipc-server",
+		"gulp": "^5.0.0",
+		"gulp-shell": "^0.8.0"
+	},
+	"devDependencies": {
+		"@types/nedb": "^1.8.16",
+		"css-loader": "^7.1.2",
+		"sass": "^1.81.0",
+		"sass-loader": "^16.0.3",
+		"style-loader": "^4.0.0",
+		"ts-loader": "^9.5.1"
+	}
+}
